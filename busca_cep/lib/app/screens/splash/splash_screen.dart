@@ -1,3 +1,4 @@
+import 'package:busca_cep/app/core/ui/widgets/button_app.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -18,9 +19,7 @@ class SplashScreen extends StatelessWidget {
                 child: IntrinsicHeight(
                   child: Column(
                     children: [
-                      SizedBox(
-                         height: constraints.maxHeight * 0.4,
-                      ),
+                      const Spacer(),
 
                       Image.asset(
                         'assets/images/app_logo.png',
@@ -30,18 +29,18 @@ class SplashScreen extends StatelessWidget {
 
                       const Spacer(),
                           
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Pesquisa por Endereço'),
+                      ButtonApp(
+                        title: 'Pesquisa por Endereço',
+                        onPressed: () => {},
                       ),
                           
                       const SizedBox(
                          height: 20,
                       ),
                   
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Busca por CEP'),
+                      ButtonApp(
+                        title: 'Busca por CEP',
+                        onPressed: () => {},
                       ),
                     ],
                   ),

@@ -1,6 +1,6 @@
 import 'package:busca_cep/app/core/multi_provider/multi_provider_app.dart';
 import 'package:busca_cep/app/core/ui/theme/theme_settings.dart';
-import 'package:busca_cep/app/screens/splash/splash_screen.dart';
+import 'package:busca_cep/app/screens/splash/splash_screen_router.dart';
 import 'package:flutter/material.dart';
 
 class BuscaCep extends StatelessWidget {
@@ -13,7 +13,7 @@ class BuscaCep extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeSettings.i.themeSettings,
-        home: const SplashScreen(),
+        home: SplashScreenRouter.screen,
       ),
     );
   }
