@@ -36,14 +36,14 @@ class AddressModel {
 
   factory AddressModel.fromMap(Map<String, dynamic> map) {
     return AddressModel(
-      cep: map['cep'] as String,
-      street: map['logradouro'] as String,
-      complement: map['complemento'] as String,
-      neighborhood: map['bairro'] as String,
-      uf: map['uf'] as String,
-      city: map['localidade'] as String,
-      ibge: map['ibge'] as String,
-      ddd: map['ddd'] as String,
+      cep: map['cep'] ?? '',
+      street: map['logradouro'] ?? '',
+      complement: map['complemento'] ?? '',
+      neighborhood: map['bairro'] ?? '',
+      uf: map['uf'] ?? '',
+      city: map['localidade'] ?? '',
+      ibge: map['ibge'] ?? '',
+      ddd: map['ddd'] ?? '',
     );
   }
 

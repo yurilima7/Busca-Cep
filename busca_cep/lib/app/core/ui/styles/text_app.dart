@@ -53,3 +53,7 @@ class TextApp {
         color: ColorsApp.i.secundaryDark,
       );
 }
+
+extension TextAppExtensions on BuildContext {
+  TextApp get textApp => TextApp.i;
+}

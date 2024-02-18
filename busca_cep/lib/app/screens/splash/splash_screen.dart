@@ -31,7 +31,11 @@ class SplashScreen extends StatelessWidget {
                           
                       ButtonApp(
                         title: 'Pesquisa por Endereço',
-                        onPressed: () => {},
+                        onPressed: () => Navigator.of(context)
+                          .pushNamed(
+                            '/home_screen',
+                            arguments: {'isCepSearch': false},
+                          ),
                       ),
                           
                       const SizedBox(
@@ -40,7 +44,11 @@ class SplashScreen extends StatelessWidget {
                   
                       ButtonApp(
                         title: 'Busca por CEP',
-                        onPressed: () => {},
+                        onPressed: () => Navigator.of(context)
+                          .pushNamed(
+                            '/home_screen',
+                            arguments: {'isCepSearch': true},
+                          ),
                       ),
                     ],
                   ),
