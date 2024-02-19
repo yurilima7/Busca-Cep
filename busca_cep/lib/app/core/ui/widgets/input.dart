@@ -1,3 +1,4 @@
+import 'package:busca_cep/app/core/ui/styles/colors_app.dart';
 import 'package:flutter/material.dart';
 
 class Input extends StatelessWidget {
@@ -9,6 +10,7 @@ class Input extends StatelessWidget {
   final TextInputType inputType;
   final FocusNode? focus;
   final TextInputAction action;
+  final VoidCallback? onPressed;
 
   const Input({
     super.key,
@@ -20,6 +22,7 @@ class Input extends StatelessWidget {
     required this.inputType,
     this.focus,
     required this.action,
+    this.onPressed,
   });
 
   @override
@@ -32,9 +35,18 @@ class Input extends StatelessWidget {
       focusNode: focus,
       textInputAction: action,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      textCapitalization: TextCapitalization.words,
       decoration: InputDecoration(
         labelText: label,
         hintText: hintText,
+        suffixIconColor: context.colors.dark,
+        suffixIcon: IconButton(
+          onPressed: onPressed,
+          icon: const Icon(
+            Icons.search,
+            size: 32,
+          ),
+        ),
       ),
     );
   }
