@@ -36,13 +36,39 @@ class AllAddressScreen extends StatelessWidget {
         child: allAddress.isNotEmpty ? ListView.builder(
           itemCount: allAddress.length,
           
-          itemBuilder: (_, index) => Card(
-            child: ListTile(
-              title: Text('${allAddress[index].street} - ${allAddress[index].neighborhood}'),
-              subtitle: Text(allAddress[index].complement),
-              trailing: Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: context.colors.secundary,
+          itemBuilder: (_, index) => InkWell(
+            onTap: () => Navigator.of(context).pushNamed(
+              '/neighborhood_screen',
+              arguments: {'address': allAddress[index]},
+            ),
+
+            borderRadius: BorderRadius.circular(10),
+            
+            child: Card(
+              child: ListTile(
+                title: Text(
+                  '${allAddress[index].street} - ${allAddress[index].neighborhood}',
+                  style: context.textApp.titleCard,
+                ),
+
+                subtitle: Visibility(
+                  visible: allAddress[index].complement != '',
+
+                  replacement: Text(
+                    'Sem complemento',
+                    style: context.textApp.subtitle,
+                  ),
+
+                  child: Text(
+                    allAddress[index].complement,
+                    style: context.textApp.subtitle,
+                  ),
+                ),
+
+                trailing: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: context.colors.secundary,
+                ),
               ),
             ),
           ),
