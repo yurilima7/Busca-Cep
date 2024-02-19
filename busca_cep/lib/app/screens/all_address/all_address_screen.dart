@@ -33,7 +33,7 @@ class AllAddressScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
       
-        child: ListView.builder(
+        child: allAddress.isNotEmpty ? ListView.builder(
           itemCount: allAddress.length,
           
           itemBuilder: (_, index) => Card(
@@ -45,6 +45,11 @@ class AllAddressScreen extends StatelessWidget {
                 color: context.colors.secundary,
               ),
             ),
+          ),
+        ) : Center(
+          child: Text(
+            'Nenhum endereço foi encontrado, tente novamente.',
+            style: context.textApp.title,
           ),
         ),
       ),
