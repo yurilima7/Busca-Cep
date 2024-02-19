@@ -10,6 +10,22 @@ class FullResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget textResult(String text, String alternativeText) {
+      return Visibility(
+        visible: text != '',
+
+        replacement: Text(
+          alternativeText,
+          style: context.textApp.mainRegular,
+        ),
+        
+        child: Text(
+          text,
+          style: context.textApp.mainRegular,
+        ),
+      );
+    }
+
     return Visibility(
       visible: addressModel?.neighborhood != '',
 
@@ -36,17 +52,40 @@ class FullResultCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
       
               children: [
-                Text("Bairro: ${addressModel?.neighborhood ?? ''}",),
+                textResult(
+                  'Bairro: ${addressModel?.neighborhood ?? ''}',
+                  '',
+                ),
+
                 const SizedBox(height: 2),
-                Text("Rua: ${addressModel?.street ?? ''}"),
+                textResult(
+                  'Rua: ${addressModel?.street ?? ''}',
+                  '',
+                ),
+
                 const SizedBox(height: 2),
-                Text("Cep: ${addressModel?.cep ?? ''}"),
+                textResult(
+                  'Cep: ${addressModel?.cep ?? ''}',
+                  '',
+                ),
+
                 const SizedBox(height: 2),
-                Text("Cidade: ${addressModel?.city ?? ''}"),
+                textResult(
+                  'Cidade: ${addressModel?.city ?? ''}',
+                  '',
+                ),
+
                 const SizedBox(height: 2),
-                Text("Complemento: ${addressModel?.complement ?? ''}"),
+                textResult(
+                  'Complemento: ${addressModel?.complement ?? ''}',
+                  'Sem complemento',
+                ),
+
                 const SizedBox(height: 2),
-                Text("UF: ${addressModel?.uf ?? ''}"),
+                textResult(
+                  'UF: ${addressModel?.uf ?? ''}',
+                  '',
+                ),
               ],
             ),
           ),
