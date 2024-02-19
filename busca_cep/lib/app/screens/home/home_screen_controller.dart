@@ -29,17 +29,21 @@ abstract class HomeScreenControllerBase with Store {
   String? success;
 
   @observable
-  bool? isLoading;
+  bool loading = false;
 
   @computed
   bool get hasError => error != null;
   @computed
   bool get hasSuccess => success != null;
+  @computed
+  bool get isLoading => loading;
 
   @action
   Future<void> findAddrees(String cep) async {
     try {
-      isLoading = true;
+      loading = true;
+      error = null;
+      success = null;
 
       address = await _viacepRepository.findAddress(cep);
       success = 'Endereço encontrado com sucesso!';
@@ -47,14 +51,16 @@ abstract class HomeScreenControllerBase with Store {
       log(e.message);
       error = e.message;
     } finally {
-      isLoading = false;
+      loading = false;
     }
   }
 
   @action
   Future<void> findAllAddress(String uf, String city, String street) async {
     try {
-      isLoading = true;
+      loading = true;
+      error = null;
+      success = null;
 
       allAddress = await _viacepRepository.findAllAddress(uf, city, street);
       success = 'Endereços encontrados com sucesso!';
@@ -62,7 +68,7 @@ abstract class HomeScreenControllerBase with Store {
       log(e.message);
       error = e.message;
     } finally {
-      isLoading = false;
+      loading = false;
     }
   }
 

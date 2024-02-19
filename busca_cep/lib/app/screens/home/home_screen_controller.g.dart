@@ -23,6 +23,13 @@ mixin _$HomeScreenController on HomeScreenControllerBase, Store {
       (_$hasSuccessComputed ??= Computed<bool>(() => super.hasSuccess,
               name: 'HomeScreenControllerBase.hasSuccess'))
           .value;
+  Computed<bool>? _$isLoadingComputed;
+
+  @override
+  bool get isLoading =>
+      (_$isLoadingComputed ??= Computed<bool>(() => super.isLoading,
+              name: 'HomeScreenControllerBase.isLoading'))
+          .value;
 
   late final _$addressAtom =
       Atom(name: 'HomeScreenControllerBase.address', context: context);
@@ -104,19 +111,19 @@ mixin _$HomeScreenController on HomeScreenControllerBase, Store {
     });
   }
 
-  late final _$isLoadingAtom =
-      Atom(name: 'HomeScreenControllerBase.isLoading', context: context);
+  late final _$loadingAtom =
+      Atom(name: 'HomeScreenControllerBase.loading', context: context);
 
   @override
-  bool? get isLoading {
-    _$isLoadingAtom.reportRead();
-    return super.isLoading;
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
   }
 
   @override
-  set isLoading(bool? value) {
-    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
-      super.isLoading = value;
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
     });
   }
 
@@ -159,9 +166,10 @@ allAddress: ${allAddress},
 msg: ${msg},
 error: ${error},
 success: ${success},
-isLoading: ${isLoading},
+loading: ${loading},
 hasError: ${hasError},
-hasSuccess: ${hasSuccess}
+hasSuccess: ${hasSuccess},
+isLoading: ${isLoading}
     ''';
   }
 }

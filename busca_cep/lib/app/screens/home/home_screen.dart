@@ -31,18 +31,27 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
     });
 
     final reactionSuccess = reaction<bool>((_) => controller.hasSuccess, (hasSucess) { 
-      showSuccess(controller.success ?? 'Sucesso!');
-      
-      if (hasSucess && !widget.isCepSearch) {
-        Navigator.of(context).pushNamed(
+      if (hasSucess) {
+        showSuccess(controller.success ?? 'Sucesso!');
+
+        !widget.isCepSearch ? Navigator.of(context).pushNamed(
           '/all_address_screen',
           arguments: {'allAddress': controller.allAddress},
-        );
+        ) : null;
+      }
+    });
+
+    final reactionIsLoading = reaction<bool>((_) => controller.isLoading, (isLoading) { 
+      if (isLoading) {
+        showLoader();
+      } else if(!isLoading && widget.isCepSearch) {
+        hideLoader();
       }
     });
 
     reactionDisposer.add(reactionError);
     reactionDisposer.add(reactionSuccess);
+    reactionDisposer.add(reactionIsLoading);
     super.onReady();
   }
 
