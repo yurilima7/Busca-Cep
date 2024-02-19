@@ -13,27 +13,51 @@ class AllAddressScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        centerTitle: true,
         
         title: Text(
           'Resultados da Busca',
           style: context.textApp.mainRegular,
         ),
+
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
+            '/home_screen',
+            arguments: {'isCepSearch': false},
+            (route) => false,
+          ),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+        ),
+
+        iconTheme: IconThemeData(
+          color: context.colors.secundary,
+        ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: PopScope(
+        canPop: false,
+        onPopInvoked : (didPop){
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            '/home_screen',
+            arguments: {'isCepSearch': false},
+            (route) => false,
+          );
+        },
 
-        child: ListView.builder(
-          itemCount: allAddress.length,
-          
-          itemBuilder: (_, index) => Card(
-            child: ListTile(
-              title: Text('${allAddress[index].street} - ${allAddress[index].neighborhood}'),
-              subtitle: Text(allAddress[index].complement),
-              trailing: Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: context.colors.secundary,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+        
+          child: ListView.builder(
+            itemCount: allAddress.length,
+            
+            itemBuilder: (_, index) => Card(
+              child: ListTile(
+                title: Text('${allAddress[index].street} - ${allAddress[index].neighborhood}'),
+                subtitle: Text(allAddress[index].complement),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: context.colors.secundary,
+                ),
               ),
             ),
           ),

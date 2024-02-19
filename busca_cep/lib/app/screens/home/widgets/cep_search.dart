@@ -53,6 +53,7 @@ class _CepSearchState extends State<CepSearch> {
 
             if (valid) {
               widget.homeScreenController.findAddrees(_cepEC.text);
+              _cepEC.clear();
             }
           },
 

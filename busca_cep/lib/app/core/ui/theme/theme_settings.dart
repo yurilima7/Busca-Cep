@@ -49,7 +49,7 @@ class ThemeSettings {
 
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: TextApp.i.input,
-      errorStyle: TextApp.i.mainRegular.copyWith(color: ColorsApp.i.error),
+      errorStyle: TextApp.i.mainRegular.copyWith(color: ColorsApp.i.error, fontSize: 12,),
       fillColor: ColorsApp.i.light,
       filled: true,
       isDense: true,

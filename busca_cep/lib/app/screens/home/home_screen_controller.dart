@@ -21,6 +21,9 @@ abstract class HomeScreenControllerBase with Store {
   List<AddressModel> allAddress = [];
 
   @observable
+  String msg = '';
+
+  @observable
   String? error;
   @observable
   String? success;
@@ -61,5 +64,16 @@ abstract class HomeScreenControllerBase with Store {
     } finally {
       isLoading = false;
     }
+  }
+
+  @action
+  void loadMsg() {
+    final currentTime = DateTime.now().hour;
+
+    msg = currentTime > 5 && currentTime < 12
+        ? 'Olá, bom dia!'
+        : currentTime >= 12 && currentTime < 18
+            ? 'Olá, boa tarde!'
+            : 'Olá, boa noite!';
   }
 }

@@ -50,7 +50,7 @@ class _AddressSearchState extends State<AddressSearch> {
                 label: 'Digite sua UF (Estado)',
                 hintText: 'Ex: MA',
                 inputType: TextInputType.name,
-                action: TextInputAction.done,
+                action: TextInputAction.next,
                 controller: _ufEC,
                 focus: _ufFocus,
                 validator: Validatorless.multiple([
@@ -66,7 +66,7 @@ class _AddressSearchState extends State<AddressSearch> {
                 label: 'Digite sua cidade',
                 hintText: 'Ex: Caxias',
                 inputType: TextInputType.name,
-                action: TextInputAction.done,
+                action: TextInputAction.next,
                 controller: _cityEC,
                 focus: _cityFocus,
                 validator: Validatorless.multiple([
@@ -105,6 +105,10 @@ class _AddressSearchState extends State<AddressSearch> {
                 _cityEC.text,
                 _streetEC.text,
               );
+
+              _ufEC.clear();
+              _cityEC.clear();
+              _streetEC.clear();
             }
           },
 

@@ -56,6 +56,22 @@ mixin _$HomeScreenController on HomeScreenControllerBase, Store {
     });
   }
 
+  late final _$msgAtom =
+      Atom(name: 'HomeScreenControllerBase.msg', context: context);
+
+  @override
+  String get msg {
+    _$msgAtom.reportRead();
+    return super.msg;
+  }
+
+  @override
+  set msg(String value) {
+    _$msgAtom.reportWrite(value, super.msg, () {
+      super.msg = value;
+    });
+  }
+
   late final _$errorAtom =
       Atom(name: 'HomeScreenControllerBase.error', context: context);
 
@@ -121,11 +137,26 @@ mixin _$HomeScreenController on HomeScreenControllerBase, Store {
         .run(() => super.findAllAddress(uf, city, street));
   }
 
+  late final _$HomeScreenControllerBaseActionController =
+      ActionController(name: 'HomeScreenControllerBase', context: context);
+
+  @override
+  void loadMsg() {
+    final _$actionInfo = _$HomeScreenControllerBaseActionController.startAction(
+        name: 'HomeScreenControllerBase.loadMsg');
+    try {
+      return super.loadMsg();
+    } finally {
+      _$HomeScreenControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 address: ${address},
 allAddress: ${allAddress},
+msg: ${msg},
 error: ${error},
 success: ${success},
 isLoading: ${isLoading},
