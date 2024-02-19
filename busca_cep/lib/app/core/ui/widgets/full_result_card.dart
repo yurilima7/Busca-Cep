@@ -77,8 +77,8 @@ class FullResultCard extends StatelessWidget {
 
                 const SizedBox(height: 2),
                 textResult(
-                  'Complemento: ${addressModel?.complement ?? ''}',
-                  'Sem complemento',
+                  'Complemento: ${addressModel?.complement ?? 'a'}',
+                  'Complemento: Sem complemento',
                 ),
 
                 const SizedBox(height: 2),
