@@ -21,11 +21,7 @@ class AllAddressScreen extends StatelessWidget {
         ),
 
         leading: IconButton(
-          onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
-            '/home_screen',
-            arguments: {'isCepSearch': false},
-            (route) => false,
-          ),
+          onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
 
@@ -34,30 +30,19 @@ class AllAddressScreen extends StatelessWidget {
         ),
       ),
 
-      body: PopScope(
-        canPop: false,
-        onPopInvoked : (didPop){
-          Navigator.of(context).pushNamedAndRemoveUntil(
-            '/home_screen',
-            arguments: {'isCepSearch': false},
-            (route) => false,
-          );
-        },
-
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-        
-          child: ListView.builder(
-            itemCount: allAddress.length,
-            
-            itemBuilder: (_, index) => Card(
-              child: ListTile(
-                title: Text('${allAddress[index].street} - ${allAddress[index].neighborhood}'),
-                subtitle: Text(allAddress[index].complement),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: context.colors.secundary,
-                ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+      
+        child: ListView.builder(
+          itemCount: allAddress.length,
+          
+          itemBuilder: (_, index) => Card(
+            child: ListTile(
+              title: Text('${allAddress[index].street} - ${allAddress[index].neighborhood}'),
+              subtitle: Text(allAddress[index].complement),
+              trailing: Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: context.colors.secundary,
               ),
             ),
           ),

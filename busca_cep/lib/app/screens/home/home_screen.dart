@@ -36,7 +36,7 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
 
         if (!widget.isCepSearch) {
           hideLoader();
-          
+
           Navigator.of(context).pushNamed(
             '/all_address_screen',
             arguments: {'allAddress': controller.allAddress},
@@ -101,66 +101,56 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
         ),
       ),
 
-      body: PopScope(
-        canPop: false,
-        onPopInvoked : (didPop){
-          Navigator.of(context).pushNamedAndRemoveUntil(
-            '/',
-            (route) => false,
-          );
-        },
-
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 10, 16, 20),
-        
-          child: LayoutBuilder(
-            builder: (_, constraints) => SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              
-                child: IntrinsicHeight(
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Image.asset(
-                          'assets/images/home_img.png',
-                          width: 255, 
-                          height: 247.88,
-                        ),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 10, 16, 20),
+      
+        child: LayoutBuilder(
+          builder: (_, constraints) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/images/home_img.png',
+                        width: 255, 
+                        height: 247.88,
                       ),
+                    ),
+                    
+                    const Spacer(),
+                    const SizedBox(height: 20),
+      
+                    Visibility(
+                      visible: widget.isCepSearch,
                       
-                      const Spacer(),
-                      const SizedBox(height: 20),
-        
-                      Visibility(
-                        visible: widget.isCepSearch,
+                      child: Observer(
+                        builder: (_) => Visibility(
+                          visible: !controller.hasSuccess,
                         
-                        child: Observer(
-                          builder: (_) => Visibility(
-                            visible: !controller.hasSuccess,
-                          
-                            replacement: FullResultCard(addressModel: controller.address),
-                          
-                            child: Text(
-                              'Digite seu cep abaixo para receber as informações sobre o endereço.',
-                              style: context.textApp.title,
-                            ),
+                          replacement: FullResultCard(addressModel: controller.address),
+                        
+                          child: Text(
+                            'Digite seu cep abaixo para receber as informações sobre o endereço.',
+                            style: context.textApp.title,
                           ),
                         ),
                       ),
-              
-                      const SizedBox(height: 20),
-                      const Spacer(),
-              
-                      Visibility(
-                        visible: widget.isCepSearch,
-        
-                        replacement: AddressSearch(homeScreenController: controller),
-        
-                        child: CepSearch(homeScreenController: controller),
-                      ),
-                    ],
-                  ),
+                    ),
+            
+                    const SizedBox(height: 20),
+                    const Spacer(),
+            
+                    Visibility(
+                      visible: widget.isCepSearch,
+      
+                      replacement: AddressSearch(homeScreenController: controller),
+      
+                      child: CepSearch(homeScreenController: controller),
+                    ),
+                  ],
                 ),
               ),
             ),
