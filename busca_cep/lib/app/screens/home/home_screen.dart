@@ -34,10 +34,14 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
       if (hasSucess) {
         showSuccess(controller.success ?? 'Sucesso!');
 
-        !widget.isCepSearch ? Navigator.of(context).pushNamed(
-          '/all_address_screen',
-          arguments: {'allAddress': controller.allAddress},
-        ) : null;
+        if (!widget.isCepSearch) {
+          hideLoader();
+          
+          Navigator.of(context).pushNamed(
+            '/all_address_screen',
+            arguments: {'allAddress': controller.allAddress},
+          );
+        }
       }
     });
 
