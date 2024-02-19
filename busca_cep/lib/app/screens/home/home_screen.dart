@@ -1,5 +1,4 @@
 import 'package:busca_cep/app/core/ui/state_controller/state_controller.dart';
-import 'package:busca_cep/app/core/ui/styles/colors_app.dart';
 import 'package:busca_cep/app/core/ui/styles/text_app.dart';
 import 'package:busca_cep/app/core/ui/widgets/full_result_card.dart';
 import 'package:busca_cep/app/screens/home/home_screen_controller.dart';
@@ -27,30 +26,14 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
 
     final reactionError = reaction<bool>((_) => controller.hasError, (hasError) { 
       if (hasError) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              controller.error ?? 'Erro!',
-              style: context.textApp.title,
-            ),
-            backgroundColor: context.colors.error,
-          ),
-        );
+        showError(controller.error ?? 'Erro!');
       }
     });
 
     final reactionSuccess = reaction<bool>((_) => controller.hasSuccess, (hasSucess) { 
+      showSuccess(controller.success ?? 'Sucesso!');
+      
       if (hasSucess && !widget.isCepSearch) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              controller.success ?? 'Sucesso!',
-              style: context.textApp.title,
-            ),
-            backgroundColor: context.colors.success,
-          ),
-        );
-
         Navigator.of(context).pushNamed(
           '/all_address_screen',
           arguments: {'allAddress': controller.allAddress},

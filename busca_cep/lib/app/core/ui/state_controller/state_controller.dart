@@ -1,7 +1,9 @@
+import 'package:busca_cep/app/core/ui/helpers/messages.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
-abstract class StateController<T extends StatefulWidget, C > extends State<T> {
+abstract class StateController<T extends StatefulWidget, C >
+   extends State<T> with Messages {
   late final C controller;
 
   void onReady() {}
