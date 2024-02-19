@@ -102,7 +102,7 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
       ),
 
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 10, 16, 20),
+        padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
       
         child: LayoutBuilder(
           builder: (_, constraints) => SingleChildScrollView(
@@ -150,6 +150,8 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
       
                       child: CepSearch(homeScreenController: controller),
                     ),
+
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
