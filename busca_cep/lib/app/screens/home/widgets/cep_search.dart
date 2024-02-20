@@ -35,6 +35,7 @@ class _CepSearchState extends State<CepSearch> {
         action: TextInputAction.done,
         controller: _cepEC,
         focus: _cepFocus,
+        hasSearchButton: true,
     
         validator: Validatorless.multiple([
           Validatorless.min(8, 'São necessários 8 digitos!'),

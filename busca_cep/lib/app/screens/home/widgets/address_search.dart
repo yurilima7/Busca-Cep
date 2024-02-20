@@ -39,12 +39,15 @@ class _AddressSearchState extends State<AddressSearch> {
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+
             children: [
               Text(
                 'Informe seus dados',
                 style: context.textApp.title,
               ),
+
               const SizedBox(height: 20),
+
               Input(
                 label: 'Digite sua UF (Estado)',
                 hintText: 'Ex: MA',
@@ -52,13 +55,16 @@ class _AddressSearchState extends State<AddressSearch> {
                 action: TextInputAction.next,
                 controller: _ufEC,
                 focus: _ufFocus,
+                hasSearchButton: false,
                 validator: Validatorless.multiple([
                   Validatorless.min(2, 'São necessários 2 digitos!'),
                   Validatorless.max(2, 'São aceitos 2 digitos no máximo!'),
                   Validatorless.required('Estado é obrigatório'),
                 ]),
               ),
+
               const SizedBox(height: 10),
+
               Input(
                 label: 'Digite sua cidade',
                 hintText: 'Ex: Caxias',
@@ -66,12 +72,15 @@ class _AddressSearchState extends State<AddressSearch> {
                 action: TextInputAction.next,
                 controller: _cityEC,
                 focus: _cityFocus,
+                hasSearchButton: false,
                 validator: Validatorless.multiple([
                   Validatorless.min(3, 'São necessários 3 digitos!'),
                   Validatorless.required('Cidade é obrigatória'),
                 ]),
               ),
+
               const SizedBox(height: 10),
+
               Input(
                 label: 'Digite sua rua',
                 hintText: 'Ex: Rua 20',
@@ -79,6 +88,7 @@ class _AddressSearchState extends State<AddressSearch> {
                 action: TextInputAction.done,
                 controller: _streetEC,
                 focus: _streetFocus,
+                hasSearchButton: false,
                 validator: Validatorless.multiple([
                   Validatorless.min(3, 'São necessários 3 digitos!'),
                   Validatorless.required('Rua é obrigatória'),
@@ -88,6 +98,7 @@ class _AddressSearchState extends State<AddressSearch> {
           ),
         ),
         const SizedBox(height: 10),
+
         ButtonApp(
           onPressed: () {
             final valid = _formKey.currentState?.validate() ?? false;
@@ -104,6 +115,7 @@ class _AddressSearchState extends State<AddressSearch> {
               _streetEC.clear();
             }
           },
+          
           title: 'Buscar',
         ),
       ],

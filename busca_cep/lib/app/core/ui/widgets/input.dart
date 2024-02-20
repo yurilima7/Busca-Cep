@@ -11,6 +11,7 @@ class Input extends StatelessWidget {
   final FocusNode? focus;
   final TextInputAction action;
   final VoidCallback? onPressed;
+  final bool hasSearchButton;
 
   const Input({
     super.key,
@@ -22,7 +23,8 @@ class Input extends StatelessWidget {
     required this.inputType,
     this.focus,
     required this.action,
-    this.onPressed,
+    this.onPressed, 
+    required this.hasSearchButton, 
   });
 
   @override
@@ -40,13 +42,13 @@ class Input extends StatelessWidget {
         labelText: label,
         hintText: hintText,
         suffixIconColor: context.colors.dark,
-        suffixIcon: IconButton(
+        suffixIcon: hasSearchButton ? IconButton(
           onPressed: onPressed,
           icon: const Icon(
             Icons.search,
             size: 32,
           ),
-        ),
+        ) : null,
       ),
     );
   }
