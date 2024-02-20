@@ -37,15 +37,14 @@ class _AddressSearchState extends State<AddressSearch> {
       children: [
         Form(
           key: _formKey,
-        
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-
             children: [
-              Text('Informe seus dados', style: context.textApp.title,),
-
+              Text(
+                'Informe seus dados',
+                style: context.textApp.title,
+              ),
               const SizedBox(height: 20),
-
               Input(
                 label: 'Digite sua UF (Estado)',
                 hintText: 'Ex: MA',
@@ -55,13 +54,11 @@ class _AddressSearchState extends State<AddressSearch> {
                 focus: _ufFocus,
                 validator: Validatorless.multiple([
                   Validatorless.min(2, 'São necessários 2 digitos!'),
-                  Validatorless.max(2, 'São necessários 2 digitos!'),
+                  Validatorless.max(2, 'São aceitos 2 digitos no máximo!'),
                   Validatorless.required('Estado é obrigatório'),
                 ]),
               ),
-
               const SizedBox(height: 10),
-        
               Input(
                 label: 'Digite sua cidade',
                 hintText: 'Ex: Caxias',
@@ -74,9 +71,7 @@ class _AddressSearchState extends State<AddressSearch> {
                   Validatorless.required('Cidade é obrigatória'),
                 ]),
               ),
-
               const SizedBox(height: 10),
-        
               Input(
                 label: 'Digite sua rua',
                 hintText: 'Ex: Rua 20',
@@ -92,9 +87,7 @@ class _AddressSearchState extends State<AddressSearch> {
             ],
           ),
         ),
-
         const SizedBox(height: 10),
-
         ButtonApp(
           onPressed: () {
             final valid = _formKey.currentState?.validate() ?? false;
@@ -111,7 +104,6 @@ class _AddressSearchState extends State<AddressSearch> {
               _streetEC.clear();
             }
           },
-
           title: 'Buscar',
         ),
       ],
