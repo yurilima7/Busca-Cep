@@ -41,6 +41,7 @@ dependencies:
   flutter_mobx: ^2.2.0+2
   validatorless: ^1.2.3
   loading_animation_widget: ^1.2.0+4
+  flutter_native_splash: ^2.3.11
 
 dev_dependencies:
   flutter_test:
