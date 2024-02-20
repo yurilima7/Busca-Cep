@@ -15,6 +15,19 @@ mixin Messages<T extends StatefulWidget> on State<T> {
         );
   }
 
+  
+  void showAlert(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              message,
+              style: context.textApp.title,
+            ),
+            backgroundColor: context.colors.warning,
+          ),
+        );
+  }
+
   void showError(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

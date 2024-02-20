@@ -111,6 +111,22 @@ mixin _$HomeScreenController on HomeScreenControllerBase, Store {
     });
   }
 
+  late final _$alertAtom =
+      Atom(name: 'HomeScreenControllerBase.alert', context: context);
+
+  @override
+  String? get alert {
+    _$alertAtom.reportRead();
+    return super.alert;
+  }
+
+  @override
+  set alert(String? value) {
+    _$alertAtom.reportWrite(value, super.alert, () {
+      super.alert = value;
+    });
+  }
+
   late final _$loadingAtom =
       Atom(name: 'HomeScreenControllerBase.loading', context: context);
 
@@ -166,6 +182,7 @@ allAddress: ${allAddress},
 msg: ${msg},
 error: ${error},
 success: ${success},
+alert: ${alert},
 loading: ${loading},
 hasError: ${hasError},
 hasSuccess: ${hasSuccess},

@@ -30,6 +30,13 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
       }
     });
 
+    
+    final reactionAlert = reaction<bool>((_) => controller.hasAlert, (hasAlert) { 
+      if (hasAlert) {
+        showAlert(controller.alert ?? 'Alerta!');
+      }
+    });
+
     final reactionSuccess = reaction<bool>((_) => controller.hasSuccess, (hasSucess) { 
       if (hasSucess) {
         showSuccess(controller.success ?? 'Sucesso!');
@@ -55,6 +62,7 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
 
     reactionDisposer.add(reactionError);
     reactionDisposer.add(reactionSuccess);
+    reactionDisposer.add(reactionAlert);
     reactionDisposer.add(reactionIsLoading);
     super.onReady();
   }

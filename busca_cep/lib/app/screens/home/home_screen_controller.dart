@@ -27,6 +27,8 @@ abstract class HomeScreenControllerBase with Store {
   String? error;
   @observable
   String? success;
+  @observable
+  String? alert;
 
   @observable
   bool loading = false;
@@ -36,6 +38,8 @@ abstract class HomeScreenControllerBase with Store {
   @computed
   bool get hasSuccess => success != null;
   @computed
+  bool get hasAlert => alert != null;
+  @computed
   bool get isLoading => loading;
 
   @action
@@ -44,9 +48,16 @@ abstract class HomeScreenControllerBase with Store {
       loading = true;
       error = null;
       success = null;
+      alert = null;
 
       address = await _viacepRepository.findAddress(cep);
-      success = 'Endereço encontrado com sucesso!';
+
+      if (address?.neighborhood == '') {
+        alert = 'A consulta retornou vazia, tente novamente.';
+      } else {
+        success = 'Endereço encontrado com sucesso!';
+      }
+
     } on RepositoryException catch (e) {
       log(e.message);
       error = e.message;
@@ -61,6 +72,7 @@ abstract class HomeScreenControllerBase with Store {
       loading = true;
       error = null;
       success = null;
+      alert = null;
 
       allAddress = await _viacepRepository.findAllAddress(uf, city, street);
       success = 'Endereços encontrados com sucesso!';
