@@ -62,4 +62,4 @@ O projeto está organizado da seguinte forma:
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes
 
 ## :dart: Status do Projeto
-Concluído.
+Fase de testes.
