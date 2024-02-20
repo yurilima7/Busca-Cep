@@ -10,22 +10,16 @@ class FullResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget textResult(String text, String alternativeText) {
-      return Visibility(
-        visible: text != '',
+    final complementText = addressModel?.complement ?? '';
+    final complementDisplay = complementText.isNotEmpty ? complementText : 'Sem complemento';
 
-        replacement: Text(
-          alternativeText,
-          style: context.textApp.mainRegular,
-        ),
-        
-        child: Text(
+    Widget textResult(String text) {
+      return Text(
           text,
           style: context.textApp.mainRegular,
-        ),
-      );
+        );
     }
-
+    
     return Visibility(
       visible: addressModel?.neighborhood != '',
 
@@ -53,38 +47,32 @@ class FullResultCard extends StatelessWidget {
       
               children: [
                 textResult(
-                  'Bairro: ${addressModel?.neighborhood ?? ''}',
-                  '',
+                  'Bairro: ${addressModel?.neighborhood}',
                 ),
 
                 const SizedBox(height: 2),
                 textResult(
-                  'Rua: ${addressModel?.street ?? ''}',
-                  '',
+                  'Rua: ${addressModel?.street}',
                 ),
 
                 const SizedBox(height: 2),
                 textResult(
-                  'Cep: ${addressModel?.cep ?? ''}',
-                  '',
+                  'Cep: ${addressModel?.cep}',
                 ),
 
                 const SizedBox(height: 2),
                 textResult(
-                  'Cidade: ${addressModel?.city ?? ''}',
-                  '',
+                  'Cidade: ${addressModel?.city}',
                 ),
 
                 const SizedBox(height: 2),
                 textResult(
-                  'Complemento: ${addressModel?.complement ?? 'a'}',
-                  'Complemento: Sem complemento',
+                  'Complemento: $complementDisplay',
                 ),
 
                 const SizedBox(height: 2),
                 textResult(
-                  'UF: ${addressModel?.uf ?? ''}',
-                  '',
+                  'UF: ${addressModel?.uf}',
                 ),
               ],
             ),
