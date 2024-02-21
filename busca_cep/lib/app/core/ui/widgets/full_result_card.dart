@@ -13,69 +13,71 @@ class FullResultCard extends StatelessWidget {
     final complementText = addressModel?.complement ?? '';
     final complementDisplay = complementText.isNotEmpty ? complementText : 'Sem complemento';
 
-    Widget textResult(String text) {
-      return Text(
-          text,
-          style: context.textApp.mainRegular,
-        );
+    Widget textResult(String text, String subtitle) {
+      return RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: text,
+              style: context.textApp.titleCard,
+            ),
+
+            TextSpan(
+              text: subtitle,
+              style: context.textApp.mainRegular,
+            ),
+          ],
+        ),
+      );
     }
     
-    return Visibility(
-      visible: addressModel?.neighborhood != '',
-
-      replacement: Text(
-        'Retornou vazio, tente novamente.',
-        style: context.textApp.title,
-      ),
-      
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-      
-        child: Card(
-          color: context.colors.light,
-      
-          shape: RoundedRectangleBorder(
-            side: BorderSide(color: context.colors.primary, width: 2.0),
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-      
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-      
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-      
-              children: [
-                textResult(
-                  'Bairro: ${addressModel?.neighborhood}',
-                ),
-
-                const SizedBox(height: 2),
-                textResult(
-                  'Rua: ${addressModel?.street}',
-                ),
-
-                const SizedBox(height: 2),
-                textResult(
-                  'Cep: ${addressModel?.cep}',
-                ),
-
-                const SizedBox(height: 2),
-                textResult(
-                  'Cidade: ${addressModel?.city}',
-                ),
-
-                const SizedBox(height: 2),
-                textResult(
-                  'Complemento: $complementDisplay',
-                ),
-
-                const SizedBox(height: 2),
-                textResult(
-                  'UF: ${addressModel?.uf}',
-                ),
-              ],
-            ),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+    
+      child: Card(
+        color: context.colors.light,
+    
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: context.colors.primary, width: 2.0),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+    
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+    
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+    
+            children: [
+              textResult(
+                'Bairro: ', '${addressModel?.neighborhood}'
+              ),
+    
+              const SizedBox(height: 2),
+              textResult(
+                'Rua: ', '${addressModel?.street}'
+              ),
+    
+              const SizedBox(height: 2),
+              textResult(
+                'Cep: ', '${addressModel?.cep}'
+              ),
+    
+              const SizedBox(height: 2),
+              textResult(
+                'Cidade: ', '${addressModel?.city}'
+              ),
+    
+              const SizedBox(height: 2),
+              textResult(
+                'Complemento: ', complementDisplay
+              ),
+    
+              const SizedBox(height: 2),
+              textResult(
+                'UF: ', '${addressModel?.uf}'
+              ),
+            ],
           ),
         ),
       ),

@@ -23,6 +23,13 @@ mixin _$HomeScreenController on HomeScreenControllerBase, Store {
       (_$hasSuccessComputed ??= Computed<bool>(() => super.hasSuccess,
               name: 'HomeScreenControllerBase.hasSuccess'))
           .value;
+  Computed<bool>? _$hasAlertComputed;
+
+  @override
+  bool get hasAlert =>
+      (_$hasAlertComputed ??= Computed<bool>(() => super.hasAlert,
+              name: 'HomeScreenControllerBase.hasAlert'))
+          .value;
   Computed<bool>? _$isLoadingComputed;
 
   @override
@@ -186,6 +193,7 @@ alert: ${alert},
 loading: ${loading},
 hasError: ${hasError},
 hasSuccess: ${hasSuccess},
+hasAlert: ${hasAlert},
 isLoading: ${isLoading}
     ''';
   }

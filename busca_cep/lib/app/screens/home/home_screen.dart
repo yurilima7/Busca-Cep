@@ -27,13 +27,14 @@ class _HomeScreenState extends StateController<HomeScreen, HomeScreenController>
     final reactionError = reaction<bool>((_) => controller.hasError, (hasError) { 
       if (hasError) {
         showError(controller.error ?? 'Erro!');
+        !widget.isCepSearch ? hideLoader() : null;
       }
     });
-
     
     final reactionAlert = reaction<bool>((_) => controller.hasAlert, (hasAlert) { 
       if (hasAlert) {
         showAlert(controller.alert ?? 'Alerta!');
+        !widget.isCepSearch ? hideLoader() : null;
       }
     });
 

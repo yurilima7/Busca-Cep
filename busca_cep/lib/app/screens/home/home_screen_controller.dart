@@ -74,8 +74,15 @@ abstract class HomeScreenControllerBase with Store {
       success = null;
       alert = null;
 
-      allAddress = await _viacepRepository.findAllAddress(uf, city, street);
-      success = 'Endereços encontrados com sucesso!';
+      final returnedAddresses = await _viacepRepository.findAllAddress(uf, city, street);
+
+      if (returnedAddresses.isEmpty || returnedAddresses[0].street == '') {  
+        alert = 'A consulta retornou vazia, tente novamente.';
+      } else {
+        allAddress = returnedAddresses;
+        success = 'Endereços encontrados com sucesso!';
+      }
+
     } on RepositoryException catch (e) {
       log(e.message);
       error = e.message;

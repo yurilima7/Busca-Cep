@@ -30,52 +30,53 @@ class AllAddressScreen extends StatelessWidget {
         ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 4.0),
-      
-        child: allAddress.isNotEmpty ? ListView.builder(
-          itemCount: allAddress.length,
-          
-          itemBuilder: (_, index) => InkWell(
-            onTap: () => Navigator.of(context).pushNamed(
-              '/neighborhood_screen',
-              arguments: {'address': allAddress[index]},
-            ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
 
-            borderRadius: BorderRadius.circular(10),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 4.0),
+        
+          child: ListView.builder(
+            itemCount: allAddress.length,
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
             
-            child: Card(
-              child: ListTile(
-                title: Text(
-                  '${allAddress[index].street} - ${allAddress[index].neighborhood}',
-                  style: context.textApp.titleCard,
-                ),
-
-                subtitle: Visibility(
-                  visible: allAddress[index].complement != '',
-
-                  replacement: Text(
-                    'Sem complemento',
-                    style: context.textApp.subtitle,
+            itemBuilder: (_, index) => InkWell(
+              onTap: () => Navigator.of(context).pushNamed(
+                '/neighborhood_screen',
+                arguments: {'address': allAddress[index]},
+              ),
+        
+              borderRadius: BorderRadius.circular(10),
+              
+              child: Card(
+                child: ListTile(
+                  title: Text(
+                    '${allAddress[index].street} - ${allAddress[index].neighborhood}',
+                    style: context.textApp.titleCard,
                   ),
-
-                  child: Text(
-                    allAddress[index].complement,
-                    style: context.textApp.subtitle,
+        
+                  subtitle: Visibility(
+                    visible: allAddress[index].complement != '',
+        
+                    replacement: Text(
+                      'Sem complemento',
+                      style: context.textApp.subtitle,
+                    ),
+        
+                    child: Text(
+                      allAddress[index].complement,
+                      style: context.textApp.subtitle,
+                    ),
                   ),
-                ),
-
-                trailing: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: context.colors.secundary,
+        
+                  trailing: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: context.colors.secundary,
+                  ),
                 ),
               ),
             ),
-          ),
-        ) : Center(
-          child: Text(
-            'Nenhum endereço foi encontrado, tente novamente.',
-            style: context.textApp.title,
           ),
         ),
       ),
