@@ -1,6 +1,6 @@
 <h1 align="center">
-  <div style="padding: 10px; border-radius: 8px;">
-    <img src="busca_cep\assets\images\splash_busca_cep.png" alt="Busca Cep logo" style="width: 50%; height: 50%">
+  <div style="padding: 10px;">
+    <img src="busca_cep\assets\github\app_logo_github.png" alt="Busca Cep logo" style="width: 50%;">
   </div>
 </h1>
 
@@ -13,6 +13,19 @@
 ## :books: Funcionalidades
 * Busca dos dados de um local com base no CEP
 * Listagem de locais em busca de informações como o CEP, através da Unidade da Federação, Cidade e Rua
+
+## :camera: Capturas de Tela
+
+Aqui estão algumas capturas de tela do aplicativo em ação:
+
+<div style="padding: 10px; display: flex; gap: 50px; flex-wrap: wrap;">
+    <img src="busca_cep\assets\github\screen_01.png" alt="Tela inicial" style="width: 202.5px; height: 450px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);">
+    <img src="busca_cep\assets\github\screen_02.png" alt="Tela de busca por cep" style="width: 202.5px; height: 450px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);">
+    <img src="busca_cep\assets\github\screen_03.png" alt="Tela de resultado da busca por cep" style="width: 202.5px; height: 450px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);">
+    <img src="busca_cep\assets\github\screen_04.png" alt="Tela de busca por endereço" style="width: 202.5px; height: 450px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);">
+    <img src="busca_cep\assets\github\screen_05.png" alt="Tela de listagem da busca por endereço" style="width: 202.5px; height: 450px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);">
+    <img src="busca_cep\assets\github\screen_06.png" alt="Tela de informações sobre um endereço" style="width: 202.5px; height: 450px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);">
+</div>
   
 ## :wrench: Tecnologias Utilizadas
 * Linguagem Dart
